@@ -21,7 +21,7 @@
       method cumplirDeseo()
         List<Esfera> esferas = recolectarEsferas()
         Deseo deseo = pensarDeseo()
-        DragonQueConcedeDeseos.getInstance().conederDeseo(esferas, deseo)
+        DragonQueConcedeDeseos.getInstance().concederDeseo(esferas, deseo)
 
 
 ### Otro Ejemplo
