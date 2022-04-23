@@ -209,8 +209,6 @@ quizás no responde a como está constituida internamente (independizar la creac
 
     // Discusión: mutabilidad, estado inconsistente
 
-### Ejemplo 3: Fechas de Java
-
 ## Factory Method
 
 
