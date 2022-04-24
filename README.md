@@ -2,8 +2,8 @@
 
 ## Singleton
 
-
-    // class Singleton
+```java
+// class Singleton
     class DragonQueConcedeDeseos
       private static DragonQueConcedeDeseos INSTANCE = new DragonQueConcedeDeseos()
 
@@ -22,10 +22,12 @@
         List<Esfera> esferas = recolectarEsferas()
         Deseo deseo = pensarDeseo()
         DragonQueConcedeDeseos.getInstance().concederDeseo(esferas, deseo)
+```
+    
 
 
 ### Otro Ejemplo
-
+```java
     class Recomendador
       private static Recomendador INSTANCE = new Recomendador()
       private Estacion estacion;
@@ -40,9 +42,9 @@
       method Atuendo recomendar(List<Prenda> prendasPosibles)
         ....
         return new Atuendo(...)
-
+```
 ¿Cómo se usaría?
-
+```java
     // Problema 1: propenso a error al tester
 
     test si_le_doy_un_pantalon_y_estoy_en_invierno_prefiere_ropa_larga()
@@ -65,10 +67,11 @@
         // ¿WTF? Hay que reordanar el código con cuidado :/
         // Al menos es evidente... pero podría ser menos evidente
         return Recomendador.recomendar(prendas) == Recomendador.recomendar(prendas)
-
+```
 
 En todos los casos podríamos corregir el problema teniendo más cuidado o reordenando el código, pero es más fácil si tenemos múltiples instancias:
 
+```java
     // Problema 1
 
     test si_le_doy_un_pantalon_y_estoy_en_invierno_prefiere_ropa_larga()
@@ -91,7 +94,7 @@ En todos los casos podríamos corregir el problema teniendo más cuidado o reord
 
         // ¡no hay ambigüedad!
         return recomendador1.recomendar(prendas) == recomendador2.recomendar(prendas)
-
+```
 
 ## Builder
 
@@ -105,7 +108,7 @@ quizás no responde a como está constituida internamente (independizar la creac
 
 
 ### Ejemplo 1: Bebidas en Starbucks
-
+```java
     BebidaBuilder builder = new BebidaBuilder()
     builder.conCafe()
     builder.conChocolate(NEGRO)
@@ -122,9 +125,9 @@ quizás no responde a como está constituida internamente (independizar la creac
       .conCanela()
       .tamaño(M)
       .crearBebida()
-
+```
 ### Ejemplo 2: ¡Muchas opciones de configuración!
-
+```java
     // Volvió el Recomendador. Nos damos cuenta de que tiene una gran cantidad de parámetros de configuración:
     class Recomendador
       private estacion
@@ -147,9 +150,11 @@ quizás no responde a como está constituida internamente (independizar la creac
     recomendador.setEstacion(INVIERNO)
     recomendador.setFormalidad(FORMAL)
     // etc... y ojalá no nos olvidemos de nada :/
+```
+    
+Alternativa: Builder
 
-    Alternativa: Builder
-
+```java
     class RecomendadorBuilder
       // notar que tenemos:
       //  defaults
@@ -208,10 +213,9 @@ quizás no responde a como está constituida internamente (independizar la creac
 
 
     // Discusión: mutabilidad, estado inconsistente
-
+```
 ## Factory Method
-
-
+```java
     pizzeria = new Pizzeria()
     // queremos crear la pizza del lugar
     pizzeria.crearPizza()
@@ -246,7 +250,4 @@ quizás no responde a como está constituida internamente (independizar la creac
     class PizzeriaDePalermo
       method instanciarPizza
         return new PizzaPalermo()
-
-
-
-
+```
